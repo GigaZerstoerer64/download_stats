@@ -1,9 +1,12 @@
 import requests
 import json
 from pathlib import Path
+from datetime import datetime
 
 GITHUB_TOKEN = "YOUR_GITHUB_TOKEN"
 REPO_FILE = "repos.txt"
+ARCHIVE_FILE = "github_stats_archive.json"
+OUTPUT_FILE = "github_stats_output.json"
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
@@ -62,6 +65,20 @@ def summarize_release_downloads(releases):
     return summary
 
 
+def load_archive():
+    """Load existing archive or create empty one"""
+    if Path(ARCHIVE_FILE).exists():
+        with open(ARCHIVE_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+
+def save_archive(archive):
+    """Save archive to file"""
+    with open(ARCHIVE_FILE, "w") as f:
+        json.dump(archive, f, indent=2)
+
+
 def process_repo(repo):
     print(f"\n=== Processing {repo} ===")
 
@@ -74,6 +91,7 @@ def process_repo(repo):
 
     return {
         "repo": repo,
+        "timestamp": datetime.utcnow().isoformat() + "Z",
         "metadata": {
             "description": info.get("description"),
             "stars": info.get("stargazers_count"),
@@ -98,16 +116,27 @@ def process_repo(repo):
 def main():
     repos = Path(REPO_FILE).read_text().strip().splitlines()
     results = []
+    archive = load_archive()
 
     for repo in repos:
         repo = repo.strip()
         if repo:
-            results.append(process_repo(repo))
+            current_data = process_repo(repo)
+            results.append(current_data)
+            
+            # Archive the data
+            if repo not in archive:
+                archive[repo] = []
+            archive[repo].append(current_data)
 
-    with open("github_stats_output.json", "w") as f:
+    # Save current snapshot
+    with open(OUTPUT_FILE, "w") as f:
         json.dump(results, f, indent=2)
+    print(f"\nSaved current snapshot to {OUTPUT_FILE}")
 
-    print("\nSaved results to github_stats_output.json")
+    # Save to archive
+    save_archive(archive)
+    print(f"Saved historical data to {ARCHIVE_FILE}")
 
 
 if __name__ == "__main__":
