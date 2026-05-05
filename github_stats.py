@@ -1,9 +1,10 @@
+import os
 import requests
 import json
 from pathlib import Path
 from datetime import datetime
 
-GITHUB_TOKEN = "YOUR_GITHUB_TOKEN"
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "YOUR_GITHUB_TOKEN")
 REPO_FILE = "repos.txt"
 ARCHIVE_FILE = "github_stats_archive.json"
 OUTPUT_FILE = "github_stats_output.json"
