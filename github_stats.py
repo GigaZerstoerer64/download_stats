@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 
 STATS_GITHUB = os.getenv("STATS_GITHUB", "")
-REPO_FILE = "repos.txt"
+REPO_FILE = "repos_config.txt"
 ARCHIVE_FILE = "github_stats_archive.json"
 OUTPUT_FILE = "repos_stats.txt"
 
