@@ -1,1 +1,138 @@
+================================================================================
+GitHub Repository Statistics - 2026-05-06T09:30:03.504182Z
+================================================================================
 
+Repository: open-cmsis-pack/vscode-cmsis-solution
+Timestamp: 2026-05-06T09:29:52.481478Z
+--------------------------------------------------------------------------------
+Metadata:
+  Description: Visual Studio Code CMSIS Solution Extension
+  Stars: 1
+  Forks: 2
+  Watchers: 1
+  Open Issues: 44
+  Size (KB): 4894
+  License: Other
+  Topics: N/A
+  Last Updated: 2026-05-05T11:55:03Z
+Traffic:
+Latest Releases:
+  v1.67.1
+    Total Downloads: 26
+      - cmsis-csolution-darwin-arm64-1.67.1.vsix: 4 downloads
+      - cmsis-csolution-darwin-x64-1.67.1.vsix: 4 downloads
+      - cmsis-csolution-linux-arm64-1.67.1.vsix: 4 downloads
+  v1.67.0
+    Total Downloads: 7
+      - cmsis-csolution-darwin-arm64-1.67.0.vsix: 1 downloads
+      - cmsis-csolution-darwin-x64-1.67.0.vsix: 1 downloads
+      - cmsis-csolution-linux-arm64-1.67.0.vsix: 1 downloads
+
+Repository: GigaZerstoerer64/download_stats
+Timestamp: 2026-05-06T09:29:55.000591Z
+--------------------------------------------------------------------------------
+Metadata:
+  Description: None
+  Stars: 0
+  Forks: 0
+  Watchers: 0
+  Open Issues: 0
+  Size (KB): 22
+  License: None
+  Topics: N/A
+  Last Updated: 2026-05-06T07:20:16Z
+Traffic:
+  Views (14d): 52
+  Clones (14d): 92
+  Top Paths:
+    1. /GigaZerstoerer64/download_stats/blob/main/github_stats.py - 14 views
+    2. /GigaZerstoerer64/download_stats/blob/main/README.md - 7 views
+    3. /GigaZerstoerer64/download_stats/blob/main/repos.txt - 7 views
+    4. /GigaZerstoerer64/download_stats - 5 views
+    5. /GigaZerstoerer64/download_stats/new/main - 5 views
+  Top Referrers:
+    1. github.com - 52 views
+
+Repository: Arm-Examples/Hello_World
+Timestamp: 2026-05-06T09:29:57.764980Z
+--------------------------------------------------------------------------------
+Metadata:
+  Description: Simple "Hello, World!" example to get you started.
+  Stars: 2
+  Forks: 1
+  Watchers: 0
+  Open Issues: 0
+  Size (KB): 162
+  License: Apache License 2.0
+  Topics: rtos
+  Last Updated: 2026-04-17T11:41:15Z
+Traffic:
+
+Repository: geode-sdk/geode
+Timestamp: 2026-05-06T09:30:00.708655Z
+--------------------------------------------------------------------------------
+Metadata:
+  Description: The ultimate Geometry Dash modding framework
+  Stars: 2360
+  Forks: 451
+  Watchers: 57
+  Open Issues: 123
+  Size (KB): 310724
+  License: Boost Software License 1.0
+  Topics: cpp, cross-platform, geode, geode-sdk, geometry-dash, low-level, mod, modding, modding-framework, modding-library
+  Last Updated: 2026-05-06T09:04:35Z
+Traffic:
+Latest Releases:
+  Development Release
+    Total Downloads: 831
+      - geode-eac98f5-android32.zip: 18 downloads
+      - geode-eac98f5-android64.zip: 436 downloads
+      - geode-eac98f5-ios.zip: 14 downloads
+  Geode v5.7.1
+    Total Downloads: 583073
+      - geode-installer-v5.7.1-linux.sh: 997 downloads
+      - geode-installer-v5.7.1-mac.pkg: 7423 downloads
+      - geode-installer-v5.7.1-win.exe: 51050 downloads
+  Geode v5.7.0
+    Total Downloads: 57337
+      - geode-installer-v5.7.0-linux.sh: 55 downloads
+      - geode-installer-v5.7.0-mac.pkg: 381 downloads
+      - geode-installer-v5.7.0-win.exe: 2720 downloads
+  Geode v5.6.1
+    Total Downloads: 2043713
+      - geode-installer-v5.6.1-linux.sh: 6368 downloads
+      - geode-installer-v5.6.1-mac.pkg: 49490 downloads
+      - geode-installer-v5.6.1-win.exe: 331647 downloads
+  Geode v5.6.0
+    Total Downloads: 23242
+      - geode-installer-v5.6.0-linux.sh: 115 downloads
+      - geode-installer-v5.6.0-mac.pkg: 142 downloads
+      - geode-installer-v5.6.0-win.exe: 1302 downloads
+
+Repository: scratchfoundation/scratch-editor
+Timestamp: 2026-05-06T09:30:03.503807Z
+--------------------------------------------------------------------------------
+Metadata:
+  Description: Scratch editor mono-repo
+  Stars: 201
+  Forks: 199
+  Watchers: 10
+  Open Issues: 105
+  Size (KB): 4410385
+  License: GNU Affero General Public License v3.0
+  Topics: N/A
+  Last Updated: 2026-05-05T18:29:36Z
+Traffic:
+Latest Releases:
+  v13.7.4-svg
+    Total Downloads: 0
+  v13.7.3
+    Total Downloads: 0
+  v13.7.2
+    Total Downloads: 0
+  v13.7.1
+    Total Downloads: 0
+  v13.6.12
+    Total Downloads: 0
+
+================================================================================

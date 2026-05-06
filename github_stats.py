@@ -4,14 +4,14 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "YOUR_GITHUB_TOKEN")
+STATS_GITHUB = os.getenv("STATS_GITHUB", "")
 REPO_FILE = "repos.txt"
 ARCHIVE_FILE = "github_stats_archive.json"
 OUTPUT_FILE = "repos_stats.txt"
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
-    "Authorization": f"Bearer {GITHUB_TOKEN}"
+    "Authorization": f"Bearer {STATS_GITHUB}"
 }
 
 API_BASE = "https://api.github.com"
@@ -49,7 +49,13 @@ def get_releases(repo):
 
 def summarize_release_downloads(releases):
     summary = []
+    # Handle case where API returns an error or non-list response
+    if not isinstance(releases, list):
+        return summary
+    
     for r in releases:
+        if not isinstance(r, dict):
+            continue
         total = sum(asset["download_count"] for asset in r.get("assets", []))
         summary.append({
             "name": r.get("name"),
@@ -169,7 +175,7 @@ def process_repo(repo):
             "open_issues": info.get("open_issues_count"),
             "size_kb": info.get("size"),
             "topics": info.get("topics"),
-            "license": info.get("license", {}).get("name"),
+            "license": info.get("license", {}).get("name") if info.get("license") else None,
             "updated_at": info.get("updated_at"),
         },
         "traffic": {
