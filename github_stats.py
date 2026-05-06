@@ -7,7 +7,7 @@ from datetime import datetime
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "YOUR_GITHUB_TOKEN")
 REPO_FILE = "repos.txt"
 ARCHIVE_FILE = "github_stats_archive.json"
-OUTPUT_FILE = "github_stats_output.json"
+OUTPUT_FILE = "repos_stats.txt"
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
@@ -80,6 +80,74 @@ def save_archive(archive):
         json.dump(archive, f, indent=2)
 
 
+def format_stats_text(results):
+    """Format results as readable text"""
+    lines = []
+    lines.append("=" * 80)
+    lines.append(f"GitHub Repository Statistics - {datetime.utcnow().isoformat()}Z")
+    lines.append("=" * 80)
+    lines.append("")
+    
+    for data in results:
+        repo = data["repo"]
+        meta = data["metadata"]
+        traffic = data["traffic"]
+        releases = data["releases"]
+        
+        lines.append(f"Repository: {repo}")
+        lines.append(f"Timestamp: {data['timestamp']}")
+        lines.append("-" * 80)
+        
+        # Metadata
+        lines.append("Metadata:")
+        lines.append(f"  Description: {meta.get('description', 'N/A')}")
+        lines.append(f"  Stars: {meta.get('stars', 0)}")
+        lines.append(f"  Forks: {meta.get('forks', 0)}")
+        lines.append(f"  Watchers: {meta.get('watchers', 0)}")
+        lines.append(f"  Open Issues: {meta.get('open_issues', 0)}")
+        lines.append(f"  Size (KB): {meta.get('size_kb', 0)}")
+        lines.append(f"  License: {meta.get('license', 'N/A')}")
+        lines.append(f"  Topics: {', '.join(meta.get('topics', [])) if meta.get('topics') else 'N/A'}")
+        lines.append(f"  Last Updated: {meta.get('updated_at', 'N/A')}")
+        
+        # Traffic
+        lines.append("Traffic:")
+        views_data = traffic.get("views", {})
+        if isinstance(views_data, dict) and views_data.get('count'):
+            lines.append(f"  Views (14d): {views_data['count']}")
+        clones_data = traffic.get("clones", {})
+        if isinstance(clones_data, dict) and clones_data.get('count'):
+            lines.append(f"  Clones (14d): {clones_data['count']}")
+        
+        # Popular Paths
+        paths_data = traffic.get("popular_paths", [])
+        if isinstance(paths_data, list) and paths_data:
+            lines.append("  Top Paths:")
+            for i, path in enumerate(paths_data[:5], 1):
+                lines.append(f"    {i}. {path.get('path', 'N/A')} - {path.get('count', 0)} views")
+        
+        # Popular Referrers
+        referrers_data = traffic.get("popular_referrers", [])
+        if isinstance(referrers_data, list) and referrers_data:
+            lines.append("  Top Referrers:")
+            for i, ref in enumerate(referrers_data[:5], 1):
+                lines.append(f"    {i}. {ref.get('referrer', 'N/A')} - {ref.get('count', 0)} views")
+        
+        # Releases
+        if releases:
+            lines.append("Latest Releases:")
+            for rel in releases[:5]:
+                lines.append(f"  {rel.get('name', rel.get('tag', 'N/A'))}")
+                lines.append(f"    Total Downloads: {rel.get('total_downloads', 0)}")
+                for asset in rel.get('assets', [])[:3]:
+                    lines.append(f"      - {asset['name']}: {asset['downloads']} downloads")
+        
+        lines.append("")
+    
+    lines.append("=" * 80)
+    return "\n".join(lines)
+
+
 def process_repo(repo):
     print(f"\n=== Processing {repo} ===")
 
@@ -130,9 +198,9 @@ def main():
                 archive[repo] = []
             archive[repo].append(current_data)
 
-    # Save current snapshot
+    # Save current snapshot as text file
     with open(OUTPUT_FILE, "w") as f:
-        json.dump(results, f, indent=2)
+        f.write(format_stats_text(results))
     print(f"\nSaved current snapshot to {OUTPUT_FILE}")
 
     # Save to archive
