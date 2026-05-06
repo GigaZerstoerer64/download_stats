@@ -8,3 +8,13 @@ TurboWarp/desktop
 kaloodinaz/neal-fun
 OpenRoberta/openroberta-lab
 raspberrypi/linux
+github/copilot-sdk-java
+github/vscode-codeql-starter
+github/copilot-language-server-release
+anthropics/claude-code
+google-gemini/cookbook
+lencx/chatgpt
+Ableton/link
+Cockos-Reaper-DAW/Reaper-Audio-Software/
+MentalPrism42/FL-Production-25.2.5-DAW
+mtytel/vital
